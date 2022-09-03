@@ -18,5 +18,11 @@
       "js": ["./content-script.js"]
     }
   ],
-  "host_permissions": ["https://stackoverflow.com/*"]
+  "host_permissions": ["https://stackoverflow.com/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["content-script.css", "execute.js"],
+      "matches": ["https://stackoverflow.com/*"]
+    }
+  ]
 }

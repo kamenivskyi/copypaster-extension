@@ -18,4 +18,11 @@ const jsonSettingsManifest = {
     },
   ],
   host_permissions: ["https://stackoverflow.com/*"], // tell browser with what sites we want to work, if add ["https://stackoverflow.com/*" <all_url>] will enable permission for all sites(aggressive permission)
+  web_accessible_resources: [
+    // add an ability to add local resources (our css, icons etc.)
+    {
+      resources: ["content_script.css"], // resource to add
+      matches: ["https://stackoverflow.com/*"], // where to add the resource (place)
+    },
+  ],
 };
