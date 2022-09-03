@@ -8,5 +8,14 @@
     "32": "./icons/copypaste-32.png",
     "64": "./icons/copypaste-64.png",
     "128": "./icons/copypaste-128.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://stackoverflow.com/*"],
+      "run_at": "document_idle",
+      "all_frames": false,
+      "js": ["./content-script.js"]
+    }
+  ],
+  "host_permissions": ["https://stackoverflow.com/*"]
 }
