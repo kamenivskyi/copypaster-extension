@@ -1,7 +1,4 @@
-const codeContainer = document.querySelector(".s-code-block");
-const code = codeContainer.querySelector("code");
-console.log("codeContainer: ", codeContainer);
-console.log("code: ", code);
+const codeContainers = document.querySelectorAll(".s-code-block");
 
 const copyToClipboard = (textToCopy) => {
   navigator.clipboard.writeText(textToCopy).then(() => {
@@ -9,18 +6,24 @@ const copyToClipboard = (textToCopy) => {
   });
 };
 
-const createCopyButton = () => {
+const createCopyButton = (codeText) => {
   const button = document.createElement("button");
   button.style.position = "absolute";
   button.style.right = "10px";
   button.style.top = "10px";
   button.textContent = "Copy";
 
-  button.addEventListener("click", () => copyToClipboard(code.textContent));
+  button.addEventListener("click", () => copyToClipboard(codeText));
 
   return button;
 };
 
-const copyButton = createCopyButton();
-codeContainer.style.position = "relative";
-codeContainer.appendChild(copyButton);
+const handleContainer = (codeContainer) => {
+  const code = codeContainer.querySelector("code");
+  const copyButton = createCopyButton(code.textContent);
+
+  codeContainer.style.position = "relative";
+  codeContainer.appendChild(copyButton);
+};
+
+[...codeContainers].forEach(handleContainer);
