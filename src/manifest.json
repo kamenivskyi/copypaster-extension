@@ -1,5 +1,6 @@
 {
   "name": "__MSG_name__",
+  "author": "Kamenivskyi Roman",
   "version": "1.0.0",
   "manifest_version": 3,
   "default_locale": "en",
@@ -8,5 +9,20 @@
     "32": "./icons/copypaste-32.png",
     "64": "./icons/copypaste-64.png",
     "128": "./icons/copypaste-128.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://stackoverflow.com/*"],
+      "run_at": "document_idle",
+      "all_frames": false,
+      "js": ["./content-script.js"]
+    }
+  ],
+  "host_permissions": ["https://stackoverflow.com/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["content-script.css", "execute.js"],
+      "matches": ["https://stackoverflow.com/*"]
+    }
+  ]
 }
