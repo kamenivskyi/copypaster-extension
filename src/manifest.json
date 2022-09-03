@@ -1,5 +1,6 @@
 {
   "name": "__MSG_name__",
+  "author": "Kamenivskyi Roman",
   "version": "1.0.0",
   "manifest_version": 3,
   "default_locale": "en",
