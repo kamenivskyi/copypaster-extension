@@ -1,9 +1,10 @@
-const codeContainers = document.querySelectorAll(".s-code-block");
+const codeContainers = document.querySelectorAll("pre");
 
-const copyToClipboard = (textToCopy) => {
+const copyToClipboard = (textToCopy, callback = () => {}) => {
   navigator.clipboard.writeText(textToCopy).then(() => {
     console.log("successfully copied!");
     notify();
+    callback();
   });
 };
 
@@ -17,6 +18,17 @@ const createCopyButton = (codeText) => {
 
   return button;
 };
+
+function notify() {
+  const script = document.createElement("script");
+  script.src = chrome.runtime.getURL("execute.js");
+
+  document.body.appendChild(script);
+
+  script.addEventListener("load", () => {
+    script.remove();
+  });
+}
 
 const handleContainer = (codeContainer) => {
   const code = codeContainer.querySelector("code");
@@ -37,13 +49,23 @@ const handleContainer = (codeContainer) => {
 
 [...codeContainers].forEach(handleContainer);
 
-function notify() {
-  const script = document.createElement("script");
-  script.src = chrome.runtime.getURL("execute.js");
+function getAllCode() {
+  return [...codeContainers]
+    .map((codeContainer, idx) => {
+      const code = codeContainer.querySelector("code").textContent;
+      const numeratedCode = "// code block #" + (idx + 1) + " \n" + code;
 
-  document.body.appendChild(script);
-
-  script.addEventListener("load", () => {
-    script.remove();
-  });
+      return numeratedCode;
+    })
+    .join(`\n`);
 }
+
+chrome.runtime.onMessage.addListener((req, info, callback) => {
+  if (req.action === "copy-all") {
+    const allCode = getAllCode();
+
+    copyToClipboard(allCode, () => callback(allCode));
+
+    return true; // if we use async code here we should return true
+  }
+});

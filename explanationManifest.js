@@ -21,8 +21,11 @@ const jsonSettingsManifest = {
   web_accessible_resources: [
     // add an ability to add local resources (our css, icons etc.)
     {
-      resources: ["content_script.css"], // resource to add
+      resources: ["content_script.css", "execute.js"], // resources to add
       matches: ["https://stackoverflow.com/*"], // where to add the resource (place)
     },
   ],
+  // "background": {
+  //   "service_worker": "background.js"
+  // }
 };
