@@ -25,7 +25,16 @@ const jsonSettingsManifest = {
       matches: ["https://stackoverflow.com/*"], // where to add the resource (place)
     },
   ],
-  // "background": {
-  //   "service_worker": "background.js"
-  // }
+  commands: {
+    // add a new "copy-all" command on alt+c key
+    "copy-all": {
+      suggested_key: {
+        default: "Alt+C",
+      },
+      description: "Copy all text",
+    },
+  },
+  background: {
+    service_worker: "background.js", // run background.js script for copy-all functionality
+  },
 };

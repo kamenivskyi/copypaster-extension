@@ -2,7 +2,7 @@ chrome.commands.onCommand.addListener((command) => {
   if (command === "copy-all") {
     getCurrentTabId().then((tabId) => {
       try {
-        chrome.tabs.sendMessage(tabId, { action: "copy-all" });
+        chrome.tabs.sendMessage(tabId, { action: "copy-all" }, (allCode) => {});
       } catch (error) {
         console.log("err: ", error);
       }
@@ -10,7 +10,6 @@ chrome.commands.onCommand.addListener((command) => {
   }
   console.log(command);
 });
-console.log("background start");
 
 async function getCurrentTabId() {
   let queryOptions = { active: true, lastFocusedWindow: true };
