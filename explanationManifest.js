@@ -17,6 +17,7 @@ const jsonSettingsManifest = {
       js: ["./content-script.js"], // paths for our scripts
     },
   ],
+  permissions: ["storage"], // enable storage (similar to local/session storage)
   host_permissions: ["https://stackoverflow.com/*"], // tell browser with what sites we want to work, if add ["https://stackoverflow.com/*" <all_url>] will enable permission for all sites(aggressive permission)
   web_accessible_resources: [
     // add an ability to add local resources (our css, icons etc.)

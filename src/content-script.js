@@ -5,8 +5,23 @@ const copyToClipboard = (textToCopy, callback = () => {}) => {
     console.log("successfully copied!");
     notify();
     callback();
+    sendSelectedCode(textToCopy);
+
+    // example communication with background script
+    exampleSendMessageToBackground();
   });
 };
+
+function sendSelectedCode(code) {
+  chrome.runtime.sendMessage({ action: "selected-code", code }, (count) => {});
+}
+
+function exampleSendMessageToBackground() {
+  chrome.runtime.sendMessage(
+    { action: "blabla-example", data: "blabla example data here" },
+    (count) => {}
+  );
+}
 
 const createCopyButton = (codeText) => {
   const button = document.createElement("button");
