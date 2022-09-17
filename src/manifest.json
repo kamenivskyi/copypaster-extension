@@ -18,6 +18,7 @@
       "js": ["./content-script.js"]
     }
   ],
+  "permissions": ["storage"],
   "host_permissions": ["https://stackoverflow.com/*"],
   "web_accessible_resources": [
     {
@@ -35,5 +36,8 @@
   },
   "background": {
     "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "name": "copypaster",
+  "version": "1.0.0",
+  "description": "",
+  "main": "explanationManifest.js",
+  "devDependencies": {
+    "@types/chrome": "^0.0.196"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamenivskyi/copypaster-extension.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kamenivskyi/copypaster-extension/issues"
+  },
+  "homepage": "https://github.com/kamenivskyi/copypaster-extension#readme"
+}
