@@ -1,0 +1,10 @@
+{
+  "name": {
+    "message": "Copypaster",
+    "description": "Копіювання коду"
+  },
+  "description": {
+    "message": "Копіюй код швидше зі stackoverflow",
+    "description": "Тестовий опис"
+  }
+}

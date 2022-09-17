@@ -54,7 +54,9 @@ const handleContainer = (codeContainer) => {
 
   const shadowRoot = root.attachShadow({ mode: "open" });
   const cssUrl = chrome.runtime.getURL("content-script.css");
-  shadowRoot.innerHTML = `<link rel="stylesheet" href="${cssUrl}"></link>`;
+  const link = createLinkTag(cssUrl);
+
+  shadowRoot.append(link);
 
   shadowRoot.prepend(copyButton);
 
@@ -73,6 +75,14 @@ function getAllCode() {
       return numeratedCode;
     })
     .join(`\n`);
+}
+
+function createLinkTag(url) {
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = url;
+
+  return link;
 }
 
 chrome.runtime.onMessage.addListener((req, info, callback) => {
