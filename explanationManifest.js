@@ -38,4 +38,9 @@ const jsonSettingsManifest = {
   background: {
     service_worker: "background.js", // run background.js script for copy-all functionality
   },
+
+  // can add template to new tab, currently no using this
+  chrome_url_overrides: {
+    newtab: "new_tab.html",
+  },
 };
